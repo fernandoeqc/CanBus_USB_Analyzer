@@ -20,15 +20,20 @@ def receive_all():
         # set to read-only, only supported on some interfaces
         
         
-        bus.state = BusState.ACTIVE
+        #bus.state = BusState.ACTIVE###################### linha com defeito
+        ############################verificar o q é busState
 
         try:
             while True:
                 msg = bus.recv(1)
                 if msg is not None:
                     print(msg)
+                else:
+                    print("None")
+                    
 
         except KeyboardInterrupt:
+            print("interrupcao")
             pass  # exit normally
 
 
