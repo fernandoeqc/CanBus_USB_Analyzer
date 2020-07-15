@@ -1,9 +1,5 @@
 #!/usr/bin/env python
 
-"""
-Shows how the receive messages via polling.
-"""
-
 import can
 from can.bus import BusState
 
@@ -23,18 +19,16 @@ def receive_all():
         #bus.state = BusState.ACTIVE###################### linha com defeito
         ############################verificar o q é busState
 
+        input("PAUSA")
         try:
             while True:
-                msg = bus.recv(1)
+                msg = bus.recv(0.1)
                 if msg is not None:
-                    print(msg)
-                else:
-                    print("None")
-                    
-
+                    print(msg.data)
+                                 
         except KeyboardInterrupt:
             print("interrupcao")
-            pass  # exit normally
+            # exit normally
 
 
 if __name__ == "__main__":
